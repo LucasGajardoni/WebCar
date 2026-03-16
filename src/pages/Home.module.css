@@ -1,0 +1,60 @@
+.hero{
+    background-image: url("https://images.unsplash.com/photo-1503376780353-7e6692767b70");
+    background-size: cover;
+    background-position: center;
+    height:260px;
+    border-radius:12px;
+    display:flex;
+    align-items:center;
+    color:white;
+    padding:40px;
+}
+
+.hero-content{
+    max-width:500px;
+}
+
+.hero h1{
+    font-weight:700;
+}
+
+.hero span{
+    color:#3b82f6;
+}
+
+.hero p{
+    font-size:14px;
+    margin:15px 0;
+}
+
+.car-card{
+    border-radius:10px;
+    overflow:hidden;
+}
+
+.car-card img{
+    height:160px;
+    object-fit:cover;
+}
+
+.price{
+    color:#2563eb;
+    font-weight:600;
+}
+
+.cta{
+    background:#3b82f6;
+    color:white;
+    padding:40px;
+    border-radius:15px;
+}
+
+.stat-card{
+    background:rgba(255,255,255,0.15);
+    padding:20px;
+    border-radius:10px;
+}
+
+.stat-card h4{
+    font-weight:700;
+}
