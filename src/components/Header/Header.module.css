@@ -1,0 +1,23 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+
+
+.header{
+    background-color: white;
+}
+
+.corFundo{
+    background-color: var(--cor-principal);
+}
+
+.textoFonte{
+    font-family: "Inter", sans-serif;
+    font-weight: 700;
+}
+
+.azul{
+    color: var(--cor-logo-web);
+}
+
+.cinza{
+    color: var(--cor-logo2-web);
+}
