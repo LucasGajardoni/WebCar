@@ -40,7 +40,7 @@ export default function Footer() {
             </div>
 
             <hr className="my-4"/>
-            
+
             <div className="d-flex justify-content-between text-secondary small">
 
                 <div>
