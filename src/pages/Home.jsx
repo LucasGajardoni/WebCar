@@ -3,7 +3,7 @@ import Footer from "../components/Footer/Footer.jsx";
 import "./Home.module.css"
 import Banner from "../components/Banner/Banner.jsx";
 import css from "./Home.module.css";
-import Card from "../../Cards/Card.jsx";
+import Card from "../components/Cards/Card.jsx";
 
 export default function Home(){
     return (
