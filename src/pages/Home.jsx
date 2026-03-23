@@ -2,7 +2,7 @@ import Header from "../components/Header/Header.jsx";
 import Footer from "../components/Footer/Footer.jsx";
 import "./Home.module.css"
 import Banner from "../components/Banner/Banner.jsx";
-import css from "../../Home.module.css";
+import css from "./Home.module.css";
 import Card from "../../Cards/Card.jsx";
 
 export default function Home(){
@@ -11,8 +11,6 @@ export default function Home(){
             <Header />
 
             <Banner />
-
-            {/* VEÍCULOS */}
 
             <div className=" container align-content-center">
                 <div className="mb-4">
@@ -42,8 +40,6 @@ export default function Home(){
                 </div>
             </div>
 
-
-            {/* SEÇÃO AZUL */}
             <section className={css.azul}>
                 <img className={css.imagem} src="/Container.png"/>
                 <div className={"cta mt-5 " + css.azul}>

@@ -29,7 +29,7 @@ export default function Login() {
                         <div className={css.grupoInput}>
                             <label  className={css.label}>E-mail</label>
                             <div className={css.input}>
-                                <img src="/email.png"/>
+                                <img src="/email.png" alt="Icone do email"/>
                                 <input
                                     type="email"
                                     placeholder="User@gmail.com"
@@ -65,7 +65,7 @@ export default function Login() {
                         </div>
 
                         <div className={css.cadastro}>
-                            <p>Não tem uma conta ainda?<Link>Cadastre-se</Link></p>
+                            <p>Não tem uma conta ainda?<Link to="/Cadastro">Cadastre-se</Link></p>
                         </div>
 
                     </form>
