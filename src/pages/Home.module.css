@@ -96,12 +96,213 @@ body{
     border-radius:15px;
 }
 
-.stat-card{
-    background:rgba(255,255,255,0.15);
-    padding:20px;
-    border-radius:10px;
+.stat-card {
+    width: 100%;
+    min-height: 120px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
+
 
 .stat-card h4{
     font-weight:700;
+}
+
+@media (max-width: 992px) {
+    .azul {
+        width: 95%;
+        height: auto;
+        min-height: 470px;
+        padding: 20px;
+    }
+
+    .imagem {
+        margin-left: 200px;
+        margin-top: 200px;
+        width: 300px;
+    }
+
+    .botao {
+        width: 180px;
+        padding: 15px;
+    }
+}
+
+/* Tablets pequenos e mobile landscape (até 768px) */
+@media (max-width: 768px) {
+    .hero {
+        height: 200px;
+        padding: 30px;
+    }
+
+    .hero-content {
+        max-width: 100%;
+    }
+
+    .hero h1 {
+        font-size: 1.5rem;
+    }
+
+    .azul {
+        width: 98%;
+        height: auto;
+        min-height: auto;
+        padding: 30px 20px;
+    }
+
+    .imagem {
+        display: none; /* Esconde a imagem em telas menores */
+    }
+
+    .botao {
+        width: 160px;
+        padding: 12px;
+        font-size: 14px;
+    }
+
+    .fundobranquinho {
+        padding: 8px 15px;
+    }
+
+    .fundobranquinho h4 {
+        font-size: 1.2rem;
+    }
+
+    .fundobranquinho p {
+        font-size: 0.8rem;
+    }
+
+    .cta {
+        padding: 30px;
+    }
+
+    .stat-card {
+        padding: 15px;
+    }
+
+    .stat-card h4 {
+        font-size: 1.3rem;
+    }
+}
+
+/* Mobile (até 576px) */
+@media (max-width: 769px) {
+    .hero {
+        height: 180px;
+        padding: 20px;
+    }
+
+    .stat-card {
+        padding: 20px;
+        text-align: center;
+        align-self: center;
+        justify-self: center;
+        width: 262px;
+        align-items: center;
+    }
+
+    .cta .row {
+        margin: 0 !important;
+    }
+
+    .hero p {
+        font-size: 12px;
+    }
+
+    .azul {
+        width: 100%;
+        border-radius: 0;
+        padding: 20px 15px;
+    }
+
+    .botao {
+        width: 100%;
+        max-width: 200px;
+        padding: 12px;
+    }
+
+    .fundobranquinho {
+        padding: 6px 10px;
+    }
+
+    .fundobranquinho h4 {
+        font-size: 1rem;
+    }
+
+    .fundobranquinho p {
+        font-size: 0.7rem;
+    }
+
+    .cta {
+        padding: 20px;
+        margin: 0 10px;
+    }
+
+    .stat-card {
+        padding: 12px;
+    }
+
+    .stat-card h4 {
+        font-size: 1.1rem;
+    }
+
+    .stat-card p {
+        font-size: 0.75rem;
+    }
+
+    /* Ajuste para o row gap dos cards */
+    .row.g-4 {
+        --bs-gutter-y: 1rem;
+    }
+}
+
+/* Telas muito pequenas (até 400px) */
+@media (max-width: 400px) {
+    .hero h1 {
+        font-size: 1.2rem;
+    }
+
+    .hero p {
+        font-size: 11px;
+    }
+
+    .fundobranquinho {
+        padding: 5px 8px;
+    }
+
+    .fundobranquinho h4 {
+        font-size: 0.9rem;
+    }
+
+    .fundobranquinho p {
+        font-size: 0.65rem;
+    }
+
+    .botao {
+        font-size: 13px;
+        padding: 10px;
+    }
+
+    .stat-card {
+        padding: 10px;
+    }
+
+    .stat-card h4 {
+        font-size: 1rem;
+    }
+}
+
+/* Ajustes para telas grandes (acima de 1400px) */
+@media (min-width: 1400px) {
+    .imagem {
+        margin-left: 500px;
+        margin-top: 250px;
+        width: auto;
+    }
+
+    .azul {
+        width: 85%;
+        max-width: 1200px;
+    }
 }

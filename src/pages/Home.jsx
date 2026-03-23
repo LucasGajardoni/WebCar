@@ -1,54 +1,59 @@
 import Header from "../components/Header/Header.jsx";
 import Footer from "../components/Footer/Footer.jsx";
-import "./Home.module.css"
+import "./Home.module.css";
 import Banner from "../components/Banner/Banner.jsx";
 import css from "./Home.module.css";
 import Card from "../components/Cards/Card.jsx";
 
-export default function Home(){
+export default function Home() {
     return (
         <>
             <Header />
 
             <Banner />
 
-            <div className=" container align-content-center">
+            <div style={{ marginTop: "70px" }} className="container align-content-center">
                 <div className="mb-4">
                     <h4 className="fw-bold">Veículos em destaque</h4>
                     <p className="text-muted">
                         Descubra os carros de maior destaque do nosso catálogo.
                     </p>
                 </div>
-                <div style={{marginBottom:"50px"}} className={"row g-4 align-items-center"}>
 
-                    <div style={{width:"280px", height:"300px"}} className="col-2">
+                {/* 🔥 CARDS DE VEÍCULOS */}
+                <div style={{ marginBottom: "70px" }} className="row g-4 justify-content-center">
+
+                    <div className="col-12 col-sm-6 col-md-3">
                         <Card />
                     </div>
 
-                    <div style={{width:"280px", height:"300px"}} className="col-2">
+                    <div className="col-12 col-sm-6 col-md-3">
                         <Card />
                     </div>
 
-                    <div style={{width:"280px", height:"300px"}} className="col-2">
+                    <div className="col-12 col-sm-6 col-md-3">
                         <Card />
                     </div>
 
-                    <div style={{width:"280px", height:"300px"}} className="col-2">
+                    <div className="col-12 col-sm-6 col-md-3">
                         <Card />
                     </div>
 
                 </div>
             </div>
 
+            {/* 🔵 SEÇÃO AZUL */}
             <section className={css.azul}>
-                <img className={css.imagem} src="/Container.png"/>
+                <img className={css.imagem} src="/Container.png" />
+
                 <div className={"cta mt-5 " + css.azul}>
 
                     <div className="row align-items-center pt-5 m-5">
 
                         <div className="col-md-6 pt-5 text-start mb-3">
-                            <h2 style={{fontWeight: "bold"}} >Pronto para comprar seu
-                                carro?</h2>
+                            <h2 style={{ fontWeight: "bold" }}>
+                                Pronto para comprar seu carro?
+                            </h2>
 
                             <p className={css.letrafina}>
                                 Mais de 2.500 concessionárias e vendedores utilizam o
@@ -59,38 +64,38 @@ export default function Home(){
                             <button className={css.botao}>
                                 Compre Agora
                             </button>
-
                         </div>
 
+                        {/* 🔥 CARDS AZUIS */}
                         <div className="col-md-6 pt-5">
 
-                            <div className="row g-3 d-flex">
+                            <div className="row g-3">
 
-                                <div className="col-6">
-                                    <div className={"stat-card text-start " + css.fundobranquinho}>
-                                        <h4 style={{fontWeight: "bold"}}>45%</h4>
-                                        <p style={{fontWeight: "normal"}}>Vendas mais rápidas</p>
+                                <div className="col-12 col-md-6">
+                                    <div className={"stat-card " + css.fundobranquinho}>
+                                        <h4 style={{marginTop:"15px"}}>45%</h4>
+                                        <p style={{marginTop:"15px"}}>Vendas mais rápidas</p>
                                     </div>
                                 </div>
 
-                                <div className="col-6">
-                                    <div className={"stat-card text-start " + css.fundobranquinho}>
-                                        <h4 style={{fontWeight:"bold"}}>24/7</h4>
-                                        <p style={{fontWeight: "normal"}}>Monitoramento</p>
+                                <div className="col-12 col-md-6">
+                                    <div className={"stat-card " + css.fundobranquinho}>
+                                        <h4 style={{marginTop:"15px"}}>24/7</h4>
+                                        <p style={{marginTop:"15px"}}>Monitoramento</p>
                                     </div>
                                 </div>
 
-                                <div className="col-6">
-                                    <div className={"stat-card text-start " + css.fundobranquinho}>
-                                        <h4 style={{fontWeight:"bold"}}>Ilimitado</h4>
-                                        <p style={{fontWeight:"normal"}}>Anúncios</p>
+                                <div className="col-12 col-md-6">
+                                    <div className={"stat-card " + css.fundobranquinho}>
+                                        <h4 style={{marginTop:"15px"}}>Ilimitado</h4>
+                                        <p style={{marginTop:"15px"}}>Anúncios</p>
                                     </div>
                                 </div>
 
-                                <div className="col-6">
-                                    <div className={"stat-card text-start " + css.fundobranquinho}>
-                                        <h4 style={{fontWeight:"bold"}}>Seguro</h4>
-                                        <p style={{fontWeight:"normal"}}>Proteção de dados</p>
+                                <div className="col-12 col-md-6">
+                                    <div className={"stat-card " + css.fundobranquinho}>
+                                        <h4 style={{marginTop:"15px"}}>Seguro</h4>
+                                        <p style={{marginTop:"15px"}}>Proteção de dados</p>
                                     </div>
                                 </div>
 
@@ -102,7 +107,8 @@ export default function Home(){
 
                 </div>
             </section>
+
             <Footer />
         </>
-    )
+    );
 }
