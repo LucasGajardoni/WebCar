@@ -3,6 +3,10 @@ import Home from "./pages/Home.jsx";
 import Login from "./pages/Login.jsx";
 import Cadastro from "./pages/Cadastro.jsx";
 import SucessoPag from "./pages/SucessoPag.jsx";
+import RecuperarSenhaEmail from "./pages/RecuperarSenhaEmail.jsx";
+import VerificarEmailSenha from "./pages/VerificarEmailSenha.jsx";
+import TrocarSenha from "./pages/TrocarSenha.jsx";
+import VerificarEmailConta from "./pages/VerificarEmailConta.jsx";
 
 
 
@@ -14,6 +18,10 @@ export default function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/cadastro" element={<Cadastro />} />
           <Route path="/sucesso" element={<SucessoPag />} />
+          <Route path="/recuperarSenhaEmail" element={<RecuperarSenhaEmail />} />
+          <Route path="/verificarEmailSenha" element={<VerificarEmailSenha />} />
+          <Route path="/trocarSenha" element={<TrocarSenha />} />
+          <Route path="/verificarEmailConta" element={<VerificarEmailConta />} />
       </Routes>
     </BrowserRouter>
   );

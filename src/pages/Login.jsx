@@ -1,5 +1,6 @@
 import css from './Login.module.css';
 import Header from "../components/Header/Header.jsx";
+import Footer from "../components/Footer/Footer.jsx";
 import { Link } from "react-router-dom";
 import { useState } from "react";
 import Sucesso from "../components/Sucesso/Sucesso.jsx";
@@ -17,8 +18,6 @@ export default function Login() {
     function fazerLogin(e) {
         e.preventDefault();
 
-        // aqui depois você coloca validação ou API
-        // se o login der certo:
         setMostrarPopup(true);
     }
 
@@ -77,7 +76,7 @@ export default function Login() {
                         </div>
 
                         <div className={css.senha}>
-                            <Link to="/">Esqueceu a senha?</Link>
+                            <Link to="/recuperarsenhaemail">Esqueceu a senha?</Link>
                         </div>
 
                         <div className={css.cadastro}>
@@ -88,6 +87,8 @@ export default function Login() {
                     </form>
                 </div>
             </div>
+
+            <Footer />
 
             {mostrarPopup && (
                 <Sucesso
