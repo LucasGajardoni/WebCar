@@ -29,7 +29,8 @@ export default function Cadastro() {
         formData.append("email", email);
         formData.append("cpf", cpf);
         formData.append("senha", senha);
-        formData.append("tipo", "2"); // cliente padrão
+        formData.append("tipo", "2");
+
         if (imagem) {
             formData.append("imagem", imagem);
         }
