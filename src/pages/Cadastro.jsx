@@ -1,9 +1,61 @@
-import "./Cadastro.module.css"
-import css from "./Cadastro.module.css"
+import "./Cadastro.module.css";
+import css from "./Cadastro.module.css";
 import Header from "../components/Header/Header";
-import { Link } from "react-router-dom";
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 export default function Cadastro() {
+    const navigate = useNavigate();
+
+    const [nome, setNome] = useState("");
+    const [telefone, setTelefone] = useState("");
+    const [email, setEmail] = useState("");
+    const [cpf, setCpf] = useState("");
+    const [senha, setSenha] = useState("");
+    const [confirmarSenha, setConfirmarSenha] = useState("");
+    const [imagem, setImagem] = useState(null);
+
+    async function handleSubmit(e) {
+        e.preventDefault();
+
+        if (senha !== confirmarSenha) {
+            alert("As senhas não coincidem!");
+            return;
+        }
+
+        const formData = new FormData();
+        formData.append("nome", nome);
+        formData.append("telefone", telefone);
+        formData.append("email", email);
+        formData.append("cpf", cpf);
+        formData.append("senha", senha);
+        formData.append("tipo", "2"); // cliente padrão
+        if (imagem) {
+            formData.append("imagem", imagem);
+        }
+
+        try {
+            const response = await fetch("http://10.92.3.145:5000/adicionar_usuario", {
+                method: "POST",
+                body: formData
+            });
+
+            const data = await response.json();
+
+            if (!response.ok) {
+                alert(data.mensagem);
+                return;
+            }
+
+            alert("Cadastro realizado com sucesso!");
+            navigate("/login");
+
+        } catch (error) {
+            console.error(error);
+            alert("Erro ao conectar com o servidor");
+        }
+    }
+
     return (
         <>
             <Header />
@@ -17,77 +69,97 @@ export default function Cadastro() {
                     </p>
 
                     <div className={css.cardCadastro}>
-                        <form className={css.formularioCadastro}>
+                        <form className={css.formularioCadastro} onSubmit={handleSubmit}>
+
                             <div className={css.grupoCampo}>
-                                <label className={css.rotuloCampo}>Nome Completo</label>
+                                <label>Nome Completo</label>
                                 <input
                                     type="text"
                                     placeholder="Digite seu nome completo"
                                     className={css.inputCadastro}
+                                    value={nome}
+                                    onChange={(e) => setNome(e.target.value)}
                                 />
                             </div>
 
                             <div className={css.grupoCampo}>
-                                <label className={css.rotuloCampo}>Telefone</label>
+                                <label>Telefone</label>
                                 <input
                                     type="text"
                                     placeholder="(19) 98847-3521"
                                     className={css.inputCadastro}
+                                    value={telefone}
+                                    onChange={(e) => setTelefone(e.target.value)}
                                 />
                             </div>
 
                             <div className={css.grupoCampo}>
-                                <label className={css.rotuloCampo}>E-mail</label>
+                                <label>E-mail</label>
                                 <input
                                     type="email"
                                     placeholder="seuemail@exemplo.com"
                                     className={css.inputCadastro}
+                                    value={email}
+                                    onChange={(e) => setEmail(e.target.value)}
+                                />
+                            </div>
+
+                            <div className={css.grupoCampo}>
+                                <label>CPF</label>
+                                <input
+                                    type="text"
+                                    placeholder="000.000.000-00"
+                                    className={css.inputCadastro}
+                                    value={cpf}
+                                    onChange={(e) => setCpf(e.target.value)}
                                 />
                             </div>
 
                             <div className={css.linhaSenha}>
                                 <div className={css.grupoCampo}>
-                                    <label className={css.rotuloCampo}>Senha</label>
+                                    <label>Senha</label>
                                     <input
                                         type="password"
                                         placeholder="••••••••"
                                         className={css.inputCadastro}
+                                        value={senha}
+                                        onChange={(e) => setSenha(e.target.value)}
                                     />
                                 </div>
 
                                 <div className={css.grupoCampo}>
-                                    <label className="rotulo-campo">Confirmar Senha</label>
+                                    <label>Confirmar Senha</label>
                                     <input
                                         type="password"
                                         placeholder="••••••••"
                                         className={css.inputCadastro}
+                                        value={confirmarSenha}
+                                        onChange={(e) => setConfirmarSenha(e.target.value)}
                                     />
                                 </div>
                             </div>
 
-                            <div className={"p-5 text-center mb-3" + css.uploadArea}>
+                            <div className={"p-5 text-center mb-3 " + css.uploadArea}>
                                 <div className="mb-3">
-                                    <img src="/Nuvem.png"/>
+                                    <img src="/Nuvem.png" alt="upload" />
                                 </div>
 
-                                <button
-                                    type="button"
-                                    className="btn btn-light border px-4 py-2 fw-semibold"
-                                >
-                                    Selecionar Fotos
-                                </button>
+                                <input
+                                    type="file"
+                                    onChange={(e) => setImagem(e.target.files[0])}
+                                />
                             </div>
 
                             <div>
                                 <button type="submit" className={css.botaoCadastro}>
-                                    <Link to={"/Login"} style={{color: 'white'}}>Cadastrar</Link>
+                                    Cadastrar
                                 </button>
                             </div>
-
 
                             <p className={css.textoLogin}>
                                 Já tem uma conta? <a href="/login">Entre aqui</a>
                             </p>
+
                         </form>
                     </div>
                 </section>

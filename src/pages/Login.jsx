@@ -1,25 +1,59 @@
 import css from './Login.module.css';
 import Header from "../components/Header/Header.jsx";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import Sucesso from "../components/Sucesso/Sucesso.jsx";
 
 export default function Login() {
+
+    const navigate = useNavigate();
+
     const [senha, setSenha] = useState("");
     const [mostrarSenha, setMostrarSenha] = useState(false);
     const [email, setEmail] = useState("");
     const [mostrarPopup, setMostrarPopup] = useState(false);
+    const [erro, setErro] = useState("");
 
     function toggleSenha() {
         setMostrarSenha(!mostrarSenha);
     }
 
-    function fazerLogin(e) {
+    async function fazerLogin(e) {
         e.preventDefault();
 
-        // aqui depois você coloca validação ou API
-        // se o login der certo:
-        setMostrarPopup(true);
+        setErro("");
+
+        try {
+            const response = await fetch("http://10.92.3.145:5000/login", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                credentials: "include",
+                body: JSON.stringify({
+                    email,
+                    senha
+                })
+            });
+
+            const data = await response.json();
+
+            if (!response.ok) {
+                setErro(data.mensagem);
+                return;
+            }
+
+            // ✅ sucesso
+            setMostrarPopup(true);
+
+            // redireciona depois de 2s
+            setTimeout(() => {
+                navigate("/home");
+            }, 2000);
+
+        } catch (error) {
+            setErro("Erro ao conectar com o servidor");
+        }
     }
 
     function fecharPopup() {
@@ -61,7 +95,6 @@ export default function Login() {
                                     required
                                 />
                                 <span
-                                    className="input-group-text"
                                     onClick={toggleSenha}
                                     style={{ cursor: "pointer" }}
                                 >
@@ -72,9 +105,20 @@ export default function Login() {
 
                         <div className="d-grid gap-2 col-12 mx-auto">
                             <button className="btn btn-primary" type="submit">
-                                Entre
+                                Entrar
                             </button>
                         </div>
+
+                        {erro && (
+                            <p style={{
+                                color: "#ff4d4f",
+                                marginTop: "10px",
+                                textAlign: "center",
+                                fontWeight: "500"
+                            }}>
+                                {erro}
+                            </p>
+                        )}
 
                         <div className={css.senha}>
                             <Link to="/">Esqueceu a senha?</Link>
@@ -91,7 +135,7 @@ export default function Login() {
 
             {mostrarPopup && (
                 <Sucesso
-                    mensagem="Login realizado com sucesso! Bem-vindo à WebCar "
+                    mensagem="Login realizado com sucesso! Bem-vindo à WebCar"
                     onClose={fecharPopup}
                 />
             )}

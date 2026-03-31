@@ -1,6 +1,16 @@
+import { useEffect } from "react";
 import css from "./Sucesso.module.css";
 
 export default function Sucesso({ mensagem, onClose }) {
+
+    useEffect(() => {
+        const timer = setTimeout(() => {
+            onClose();
+        }, 2000);
+
+        return () => clearTimeout(timer);
+    }, []);
+
     return (
         <div className={css.overlay}>
             <div className={css.card}>
