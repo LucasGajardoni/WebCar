@@ -1,14 +1,69 @@
 import css from './Login.module.css';
 import Header from "../components/Header/Header.jsx";
 import Footer from "../components/Footer/Footer.jsx";
-import { Link } from "react-router-dom";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import Sucesso from "../components/Sucesso/Sucesso.jsx";
 
 export default function VerificarEmailSenha() {
-    const [codigo, setCodigo] = useState("");
 
-    function avancar(e) {
+    const [codigo, setCodigo] = useState("");
+    const [erro, setErro] = useState("");
+    const [mostrarPopup, setMostrarPopup] = useState(false);
+    const [mensagemSucesso, setMensagemSucesso] = useState("");
+
+    const navigate = useNavigate();
+
+    async function avancar(e) {
         e.preventDefault();
+
+        setErro("");
+
+        const email = localStorage.getItem("emailVerificacao");
+
+        if (!email) {
+            setErro("Email não encontrado");
+            return;
+        }
+
+        if (!codigo) {
+            setErro("Digite o código");
+            return;
+        }
+
+        try {
+            const response = await fetch("http://10.92.3.145:5000/verificar_codigo", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({
+                    email,
+                    codigo
+                })
+            });
+
+            const data = await response.json();
+
+            if (!response.ok) {
+                setErro(data.mensagem);
+                return;
+            }
+
+            // salva código
+            localStorage.setItem("codigoVerificacao", codigo);
+
+            // ✅ SUCESSO
+            setMensagemSucesso("Código válido!");
+            setMostrarPopup(true);
+
+            setTimeout(() => {
+                navigate("/trocarSenha");
+            }, 2000);
+
+        } catch (error) {
+            setErro("Erro ao conectar com o servidor");
+        }
     }
 
     return (
@@ -24,24 +79,46 @@ export default function VerificarEmailSenha() {
                             <label className={css.label}>Código</label>
                             <div className={css.input}>
                                 <input
-                                    type="numeric"
-                                    placeholder="******"
+                                    type="text"
+                                    placeholder="Digite o código"
                                     value={codigo}
+                                    maxLength={6}
                                     onChange={(e) => setCodigo(e.target.value)}
-                                    required
+                                    onKeyPress={(e) => {
+                                        if (isNaN(e.key)) e.preventDefault();
+                                    }}
                                 />
                             </div>
                         </div>
 
                         <div className="d-grid gap-2 col-12 mx-auto">
                             <button className="btn btn-primary" type="submit">
-                                <Link to={"/trocarSenha"} style={{color: 'white'}}>Avançar</Link>
+                                Verificar Código
                             </button>
                         </div>
 
+                        {/* 🔴 ERRO */}
+                        {erro && (
+                            <p style={{
+                                color: "#ff4d4f",
+                                marginTop: "10px",
+                                textAlign: "center",
+                                fontWeight: "500"
+                            }}>
+                                {erro}
+                            </p>
+                        )}
                     </form>
                 </div>
             </div>
+
+            {/* ✅ SUCESSO */}
+            {mostrarPopup && (
+                <Sucesso
+                    mensagem={mensagemSucesso}
+                    onClose={() => setMostrarPopup(false)}
+                />
+            )}
 
             <Footer />
         </>

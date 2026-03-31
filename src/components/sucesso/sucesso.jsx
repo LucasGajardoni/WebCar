@@ -6,7 +6,7 @@ export default function Sucesso({ mensagem, onClose }) {
     useEffect(() => {
         const timer = setTimeout(() => {
             onClose();
-        }, 2000);
+        }, 1000);
 
         return () => clearTimeout(timer);
     }, []);
@@ -21,10 +21,6 @@ export default function Sucesso({ mensagem, onClose }) {
                 <p className="text-muted mt-2">
                     {mensagem}
                 </p>
-
-                <button className="btn btn-primary mt-4 px-4" onClick={onClose}>
-                    Fechar
-                </button>
             </div>
         </div>
     );

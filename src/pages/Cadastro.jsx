@@ -15,11 +15,21 @@ export default function Cadastro() {
     const [confirmarSenha, setConfirmarSenha] = useState("");
     const [imagem, setImagem] = useState(null);
 
+    const [erro, setErro] = useState("");
+
     async function handleSubmit(e) {
         e.preventDefault();
 
+        setErro("");
+
+        // ✅ VALIDAÇÕES FRONT (rápidas)
+        if (!nome || !email || !cpf || !senha || !confirmarSenha) {
+            setErro("Preencha todos os campos");
+            return;
+        }
+
         if (senha !== confirmarSenha) {
-            alert("As senhas não coincidem!");
+            setErro("As senhas não coincidem");
             return;
         }
 
@@ -29,6 +39,7 @@ export default function Cadastro() {
         formData.append("email", email);
         formData.append("cpf", cpf);
         formData.append("senha", senha);
+        formData.append("confirma", confirmarSenha); // 🔥 IMPORTANTE (sua API usa isso)
         formData.append("tipo", "2");
 
         if (imagem) {
@@ -44,16 +55,19 @@ export default function Cadastro() {
             const data = await response.json();
 
             if (!response.ok) {
-                alert(data.mensagem);
+                setErro(data.mensagem);
                 return;
             }
 
-            alert("Cadastro realizado com sucesso!");
-            navigate("/login");
+            // ✅ sucesso
+            localStorage.setItem("emailVerificacao", email);
+
+            navigate("/VerificarEmailConta", {
+                state: { email }
+            });
 
         } catch (error) {
-            console.error(error);
-            alert("Erro ao conectar com o servidor");
+            setErro("Erro ao conectar com o servidor");
         }
     }
 
@@ -87,9 +101,10 @@ export default function Cadastro() {
                                 <label>Telefone</label>
                                 <input
                                     type="text"
-                                    placeholder="(19) 98847-3521"
+                                    placeholder="Digite seu telefone"
                                     className={css.inputCadastro}
                                     value={telefone}
+                                    maxLength={11}
                                     onChange={(e) => setTelefone(e.target.value)}
                                 />
                             </div>
@@ -109,9 +124,10 @@ export default function Cadastro() {
                                 <label>CPF</label>
                                 <input
                                     type="text"
-                                    placeholder="000.000.000-00"
+                                    placeholder="Digite seu CPF"
                                     className={css.inputCadastro}
                                     value={cpf}
+                                    maxLength={11}
                                     onChange={(e) => setCpf(e.target.value)}
                                 />
                             </div>
@@ -156,6 +172,12 @@ export default function Cadastro() {
                                     Cadastrar
                                 </button>
                             </div>
+
+                            {erro && (
+                                <p className={css.erro}>
+                                    {erro}
+                                </p>
+                            )}
 
                             <p className={css.textoLogin}>
                                 Já tem uma conta? <a href="/login">Entre aqui</a>

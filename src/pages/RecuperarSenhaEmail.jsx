@@ -1,14 +1,61 @@
 import css from './Login.module.css';
 import Header from "../components/Header/Header.jsx";
 import Footer from "../components/Footer/Footer.jsx";
-import { Link } from "react-router-dom";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import Sucesso from "../components/Sucesso/Sucesso.jsx";
 
 export default function RecuperarSenhaEmail() {
-    const [email, setEmail] = useState("");
 
-    function avancar(e) {
+    const [email, setEmail] = useState("");
+    const [erro, setErro] = useState("");
+    const [mostrarPopup, setMostrarPopup] = useState(false);
+    const [mensagemSucesso, setMensagemSucesso] = useState("");
+
+    const navigate = useNavigate();
+
+    async function avancar(e) {
         e.preventDefault();
+
+        setErro("");
+
+        if (!email) {
+            setErro("Digite seu email");
+            return;
+        }
+
+        try {
+            const response = await fetch("http://10.92.3.145:5000/esqueci_senha", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({ email })
+            });
+
+            const data = await response.json();
+
+            if (!response.ok) {
+                setErro(data.mensagem);
+                return;
+            }
+
+            // salva dados
+            localStorage.setItem("emailVerificacao", email);
+            localStorage.setItem("tipoVerificacao", "recuperacao");
+
+            // ✅ SUCESSO BONITO
+            setMensagemSucesso("Código enviado para seu email!");
+            setMostrarPopup(true);
+
+            // redireciona depois
+            setTimeout(() => {
+                navigate("/verificarEmailSenha");
+            }, 2000);
+
+        } catch (error) {
+            setErro("Erro ao conectar com o servidor");
+        }
     }
 
     return (
@@ -29,17 +76,27 @@ export default function RecuperarSenhaEmail() {
                                     placeholder="User@gmail.com"
                                     value={email}
                                     onChange={(e) => setEmail(e.target.value)}
-                                    required
                                 />
                             </div>
                         </div>
 
                         <div className="d-grid gap-2 col-12 mx-auto">
                             <button className="btn btn-primary" type="submit">
-                                <Link to={"/verificarEmailSenha"} style={{color: 'white'}}>Avançar</Link>
+                                Enviar Código
                             </button>
                         </div>
 
+                        {/* 🔴 ERRO */}
+                        {erro && (
+                            <p style={{
+                                color: "#ff4d4f",
+                                marginTop: "10px",
+                                textAlign: "center",
+                                fontWeight: "500"
+                            }}>
+                                {erro}
+                            </p>
+                        )}
                     </form>
                 </div>
             </div>
