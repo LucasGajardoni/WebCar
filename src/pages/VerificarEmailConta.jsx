@@ -1,14 +1,71 @@
 import css from './Login.module.css';
 import Header from "../components/Header/Header.jsx";
 import Footer from "../components/Footer/Footer.jsx";
-import { Link } from "react-router-dom";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import Sucesso from "../components/Sucesso/Sucesso.jsx";
 
 export default function VerificarEmailConta() {
-    const [codigo, setCodigo] = useState("");
 
-    function avancar(e) {
+    const [codigo, setCodigo] = useState("");
+    const [erro, setErro] = useState("");
+    const [mostrarPopup, setMostrarPopup] = useState(false);
+    const [mensagemSucesso, setMensagemSucesso] = useState("");
+
+    const navigate = useNavigate();
+
+    async function avancar(e) {
         e.preventDefault();
+
+        setErro("");
+
+        const email = localStorage.getItem("emailVerificacao");
+
+        if (!email) {
+            setErro("Email não encontrado. Faça o cadastro novamente.");
+            navigate("/cadastro");
+            return;
+        }
+
+        if (!codigo) {
+            setErro("Digite o código");
+            return;
+        }
+
+        try {
+            const response = await fetch("http://10.92.3.145:5000/verificar_email", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({
+                    email: email,
+                    codigo: codigo
+                })
+            });
+
+            const data = await response.json();
+
+            if (!response.ok) {
+                setErro(data.mensagem);
+                return;
+            }
+
+            // ✅ SUCESSO REAL DO CADASTRO
+            setMensagemSucesso("Cadastro confirmado com sucesso!");
+            setMostrarPopup(true);
+
+            // limpa email
+            localStorage.removeItem("emailVerificacao");
+
+            // redireciona depois
+            setTimeout(() => {
+                navigate("/login");
+            }, 2000);
+
+        } catch (error) {
+            setErro("Erro ao conectar com o servidor");
+        }
     }
 
     return (
@@ -24,24 +81,43 @@ export default function VerificarEmailConta() {
                             <label className={css.label}>Código</label>
                             <div className={css.input}>
                                 <input
-                                    type="numeric"
-                                    placeholder="******"
+                                    type="text"
+                                    placeholder="Digite o código"
                                     value={codigo}
+                                    maxLength={6}
                                     onChange={(e) => setCodigo(e.target.value)}
-                                    required
                                 />
                             </div>
                         </div>
 
                         <div className="d-grid gap-2 col-12 mx-auto">
                             <button className="btn btn-primary" type="submit">
-                                <Link to={"/login"} style={{color: 'white'}}>Avançar</Link>
+                                Verificar Código
                             </button>
                         </div>
 
+                        {/* ERRO */}
+                        {erro && (
+                            <p style={{
+                                color: "#ff4d4f",
+                                marginTop: "10px",
+                                textAlign: "center",
+                                fontWeight: "500"
+                            }}>
+                                {erro}
+                            </p>
+                        )}
                     </form>
                 </div>
             </div>
+
+            {/* ✅ POPUP DE SUCESSO */}
+            {mostrarPopup && (
+                <Sucesso
+                    mensagem={mensagemSucesso}
+                    onClose={() => setMostrarPopup(false)}
+                />
+            )}
 
             <Footer />
         </>
