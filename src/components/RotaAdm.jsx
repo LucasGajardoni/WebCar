@@ -1,16 +1,40 @@
+import { useEffect, useState } from "react";
 import { Navigate } from "react-router-dom";
 
 export default function RotaAdm({ children }) {
-    const usuarioNome = localStorage.getItem("usuario_nome");
-    const usuarioTipo = localStorage.getItem("usuario_tipo");
+    const [status, setStatus] = useState(null);
 
-    if (!usuarioNome) {
-        return <Navigate to="/login" />;
-    }
+    useEffect(() => {
+        async function verificar() {
+            try {
+                const response = await fetch("http://10.92.3.145:5000/verificar_login", {
+                    credentials: "include"
+                });
 
-    if (usuarioTipo !== "0") {
-        return <Navigate to="/" />;
-    }
+                if (!response.ok) {
+                    setStatus(false);
+                    return;
+                }
+
+                const data = await response.json();
+
+                if (data.tipo === 0) {
+                    setStatus(true);
+                } else {
+                    setStatus(false);
+                }
+
+            } catch {
+                setStatus(false);
+            }
+        }
+
+        verificar();
+    }, []);
+
+    if (status === null) return <p>Carregando...</p>;
+
+    if (!status) return <Navigate to="/" />;
 
     return children;
 }

@@ -5,10 +5,9 @@ export default function RotaRestrita({ children }) {
     const [logado, setLogado] = useState(null);
 
     useEffect(() => {
-        async function verificarLogin() {
+        async function verificar() {
             try {
                 const response = await fetch("http://10.92.3.145:5000/verificar_login", {
-                    method: "GET",
                     credentials: "include"
                 });
 
@@ -17,24 +16,21 @@ export default function RotaRestrita({ children }) {
                 } else {
                     setLogado(false);
                 }
-            } catch (erro) {
+            } catch {
                 setLogado(false);
             }
         }
 
-        verificarLogin();
+        verificar();
     }, []);
 
-    // enquanto verifica
     if (logado === null) {
         return <p>Carregando...</p>;
     }
 
-    // não logado → volta pro login
     if (!logado) {
         return <Navigate to="/login" />;
     }
 
-    // logado → entra na página
     return children;
 }
