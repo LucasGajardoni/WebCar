@@ -53,7 +53,13 @@ export default function Login() {
             setMostrarPopup(true);
 
             setTimeout(() => {
-                navigate("/restrita");
+                if (data.usuario.tipo === 0) {
+                    navigate("/restrita-adm");
+                } else if (data.usuario.tipo === 1) {
+                    navigate("/restrita-vendedor");
+                } else {
+                    navigate("/restrita");
+                }
             }, 2000);
 
         } catch (error) {
@@ -133,7 +139,7 @@ export default function Login() {
 
                         <div className={css.cadastro}>
                             <p>
-                                Não tem uma conta ainda? <Link to="/Cadastro">Cadastre-se</Link>
+                                Não tem uma conta ainda? <Link to="/cadastro">Cadastre-se</Link>
                             </p>
                         </div>
                     </form>
