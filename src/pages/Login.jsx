@@ -1,6 +1,7 @@
 import css from './Login.module.css';
 import Header from "../components/Header/Header.jsx";
 import { Link, useNavigate } from "react-router-dom";
+import Footer from "../components/Footer/Footer.jsx";
 import { useState } from "react";
 import Sucesso from "../components/Sucesso/Sucesso.jsx";
 
@@ -54,6 +55,7 @@ export default function Login() {
         } catch (error) {
             setErro("Erro ao conectar com o servidor");
         }
+        setMostrarPopup(true);
     }
 
     function fecharPopup() {
@@ -121,7 +123,7 @@ export default function Login() {
                         )}
 
                         <div className={css.senha}>
-                            <Link to="/">Esqueceu a senha?</Link>
+                            <Link to="/recuperarsenhaemail">Esqueceu a senha?</Link>
                         </div>
 
                         <div className={css.cadastro}>
@@ -132,6 +134,8 @@ export default function Login() {
                     </form>
                 </div>
             </div>
+
+            <Footer />
 
             {mostrarPopup && (
                 <Sucesso
