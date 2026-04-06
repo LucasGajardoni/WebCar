@@ -1,12 +1,15 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import Home from "src/pages/Home.jsx"
-import Login from "/src/pages/Login.jsx";
-import Cadastro from "/src/pages/Cadastro.jsx";
-import RecuperarSenhaEmail from "/src/pages/RecuperarSenhaEmail.jsx";
-import VerificarEmailSenha from "/src/pages/VerificarEmailSenha.jsx";
-import TrocarSenha from "/src/pages/TrocarSenha.jsx";
-import VerificarEmailConta from "/src/pages/VerificarEmailConta.jsx";
-import RotaProtegida from "/src/components/RotaProtegida.jsx";
+import Home from "./pages/Home.jsx"
+import Login from "./pages/Login.jsx";
+import Cadastro from "./pages/Cadastro.jsx";
+import RecuperarSenhaEmail from "./pages/RecuperarSenhaEmail.jsx";
+import VerificarEmailSenha from "./pages/VerificarEmailSenha.jsx";
+import TrocarSenha from "./pages/TrocarSenha.jsx";
+import VerificarEmailConta from "./pages/VerificarEmailConta.jsx";
+import RotaProtegida from "./components/RotaProtegida.jsx";
+import Restrita from "./pages/Restrita.jsx";
+import RestritaAdm from "./pages/RestritaAdm.jsx";
+import RestritaVendedor from "./pages/RestritaVendedor.jsx";
 
 export default function App() {
     return (
