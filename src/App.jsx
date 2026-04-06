@@ -1,18 +1,12 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import Home from "./pages/Home.jsx";
-import Login from "./pages/Login.jsx";
-import Cadastro from "./pages/Cadastro.jsx";
-import SucessoPag from "./pages/SucessoPag.jsx";
-import RecuperarSenhaEmail from "./pages/RecuperarSenhaEmail.jsx";
-import VerificarEmailSenha from "./pages/VerificarEmailSenha.jsx";
-import TrocarSenha from "./pages/TrocarSenha.jsx";
-import VerificarEmailConta from "./pages/VerificarEmailConta.jsx";
-import Restrita from "./pages/Restrita.jsx";
-import RestritaAdm from "./pages/RestritaAdm.jsx";
-import RestritaVendedor from "./pages/RestritaVendedor.jsx";
-import RotaRestrita from "./components/RotaRestrita.jsx";
-import RotaAdm from "./components/RotaAdm.jsx";
-import RotaVendedor from "./components/RotaVendedor.jsx";
+import Home from "src/pages/Home.jsx"
+import Login from "/src/pages/Login.jsx";
+import Cadastro from "/src/pages/Cadastro.jsx";
+import RecuperarSenhaEmail from "/src/pages/RecuperarSenhaEmail.jsx";
+import VerificarEmailSenha from "/src/pages/VerificarEmailSenha.jsx";
+import TrocarSenha from "/src/pages/TrocarSenha.jsx";
+import VerificarEmailConta from "/src/pages/VerificarEmailConta.jsx";
+import RotaProtegida from "/src/components/RotaProtegida.jsx";
 
 export default function App() {
     return (
@@ -21,7 +15,6 @@ export default function App() {
                 <Route path="/" element={<Home />} />
                 <Route path="/login" element={<Login />} />
                 <Route path="/cadastro" element={<Cadastro />} />
-                <Route path="/sucesso" element={<SucessoPag />} />
                 <Route path="/recuperarSenhaEmail" element={<RecuperarSenhaEmail />} />
                 <Route path="/verificarEmailSenha" element={<VerificarEmailSenha />} />
                 <Route path="/trocarSenha" element={<TrocarSenha />} />
@@ -30,27 +23,30 @@ export default function App() {
                 <Route
                     path="/restrita"
                     element={
-                        <RotaRestrita>
-                            <Restrita />
-                        </RotaRestrita>
+                        <RotaProtegida
+                            componente={<Restrita />}
+                            tipoPermitido="2"
+                        />
                     }
                 />
 
                 <Route
                     path="/restrita-adm"
                     element={
-                        <RotaAdm>
-                            <RestritaAdm />
-                        </RotaAdm>
+                        <RotaProtegida
+                            componente={<RestritaAdm />}
+                            tipoPermitido="0"
+                        />
                     }
                 />
 
                 <Route
                     path="/restrita-vendedor"
                     element={
-                        <RotaVendedor>
-                            <RestritaVendedor />
-                        </RotaVendedor>
+                        <RotaProtegida
+                            componente={<RestritaVendedor />}
+                            tipoPermitido="1"
+                        />
                     }
                 />
             </Routes>
