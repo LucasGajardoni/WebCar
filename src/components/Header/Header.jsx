@@ -6,7 +6,7 @@ export default function Header() {
 
     const location = useLocation();
 
-    // 🔥 FECHA O MENU AO TROCAR DE ROTA
+
     useEffect(() => {
         const offcanvasElement = document.getElementById("offcanvasNavbar");
 
@@ -29,7 +29,7 @@ export default function Header() {
                             <p className={"mt-2 " + css.azul}>Web<span className={css.cinza}>Car</span></p>
                         </Link>
 
-                        {/* MOBILE */}
+
                         <div className={"container-fluid " + css.mobile}>
                             <button
                                 className={"navbar-toggler " + css.corrigir}
@@ -69,7 +69,7 @@ export default function Header() {
                                             <a className="nav-link">Sobre nós</a>
                                         </li>
 
-                                        {/* 🔥 FECHA AO CLICAR */}
+
                                         <li className="nav-item">
                                             <Link
                                                 className="nav-link"
@@ -106,7 +106,7 @@ export default function Header() {
                         </div>
                     </div>
 
-                    {/* DESKTOP */}
+                    
                     <form className={"d-flex mx-4 flex-grow-1 " + css.sumir}>
                         <input
                             className="form-control"
