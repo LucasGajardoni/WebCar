@@ -120,8 +120,10 @@ export default function Cadastro() {
                                     placeholder="Digite seu telefone"
                                     className={css.inputCadastro}
                                     value={telefone}
+                                    onChange={(e) => setTelefone(e.target.value.replace(/\D/g, "").slice(0, 11))}
+                                    inputMode="numeric"
                                     maxLength={11}
-                                    onChange={(e) => setTelefone(e.target.value)}
+                                    minLength={11}
                                 />
                             </div>
 
@@ -143,8 +145,10 @@ export default function Cadastro() {
                                     placeholder="Digite seu CPF"
                                     className={css.inputCadastro}
                                     value={cpf}
+                                    onChange={(e) => setCpf(e.target.value.replace(/\D/g, "").slice(0, 11))}
+                                    inputMode="numeric"
                                     maxLength={11}
-                                    onChange={(e) => setCpf(e.target.value)}
+                                    minLength={11}
                                 />
                             </div>
 
@@ -161,7 +165,7 @@ export default function Cadastro() {
                                 </div>
 
                                 <div className={css.grupoCampo}>
-                                    <label>Confirmar Senha</label>
+                                    <label>Confirmar <span className={css.sumir}>Senha</span></label>
                                     <input
                                         type="password"
                                         placeholder="••••••••"
