@@ -1,5 +1,6 @@
 
 import css from "./Banner.module.css"
+import {Link} from "react-router-dom";
 
 export default function Banner() {
     return (
@@ -23,9 +24,11 @@ export default function Banner() {
                         conectar oportunidades, encontrar as melhores ofertas e fechar negócios com total confiança.
                     </p>
 
-                    <button className="btn btn-primary btn-lg px-4 py-2 fw-semibold">
-                        Comece agora
-                    </button>
+                    <Link to={"/Login"}>
+                        <button className="btn btn-primary btn-lg px-4 py-2 fw-semibold">
+                            Comece agora
+                        </button>
+                    </Link>
                 </div>
             </div>
         </section>

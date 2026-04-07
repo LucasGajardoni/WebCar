@@ -4,6 +4,7 @@ import "./Home.module.css";
 import Banner from "../components/Banner/Banner.jsx";
 import css from "./Home.module.css";
 import Card from "../components/Cards/Card.jsx";
+import {Link} from "react-router-dom";
 
 export default function Home() {
     return (
@@ -60,9 +61,11 @@ export default function Home() {
                                 mais rápido com ferramentas de precificação inteligente.
                             </p>
 
-                            <button className={css.botao}>
-                                Compre Agora
-                            </button>
+                            <Link to={"/Login"}>
+                                <button className={css.botao}>
+                                    Compre Agora
+                                </button>
+                            </Link>
                         </div>
 
                         <div className="col-md-6 pt-5">
