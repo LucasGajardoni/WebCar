@@ -50,10 +50,10 @@ export default function VerificarEmailSenha() {
                 return;
             }
 
-            // salva código
+
             localStorage.setItem("codigoVerificacao", codigo);
 
-            // ✅ SUCESSO
+
             setMensagemSucesso("Código válido!");
             setMostrarPopup(true);
 
@@ -97,7 +97,7 @@ export default function VerificarEmailSenha() {
                             </button>
                         </div>
 
-                        {/* 🔴 ERRO */}
+
                         {erro && (
                             <p style={{
                                 color: "#ff4d4f",
@@ -112,7 +112,7 @@ export default function VerificarEmailSenha() {
                 </div>
             </div>
 
-            {/* ✅ SUCESSO */}
+
             {mostrarPopup && (
                 <Sucesso
                     mensagem={mensagemSucesso}

@@ -49,11 +49,11 @@ export default function TrocarSenha() {
                 return;
             }
 
-            // sucesso
+
             setMensagemSucesso("Senha alterada com sucesso!");
             setMostrarPopup(true);
 
-            // limpa dados
+
             localStorage.removeItem("emailVerificacao");
             localStorage.removeItem("codigoVerificacao");
             localStorage.removeItem("tipoVerificacao");
@@ -77,7 +77,7 @@ export default function TrocarSenha() {
 
                     <form onSubmit={avancar}>
 
-                        {/* SENHA */}
+
                         <div className={css.grupoInput}>
                             <label className={css.label}>Nova Senha</label>
                             <div className={css.input}>
@@ -90,7 +90,7 @@ export default function TrocarSenha() {
                             </div>
                         </div>
 
-                        {/* CONFIRMAR */}
+
                         <div className={css.grupoInput}>
                             <label className={css.label}>Confirmar Senha</label>
                             <div className={css.input}>
@@ -109,7 +109,7 @@ export default function TrocarSenha() {
                             </button>
                         </div>
 
-                        {/* ERRO */}
+
                         {erro && (
                             <p style={{
                                 color: "#ff4d4f",
@@ -125,7 +125,7 @@ export default function TrocarSenha() {
                 </div>
             </div>
 
-            {/* SUCESSO */}
+
             {mostrarPopup && (
                 <Sucesso
                     mensagem={mensagemSucesso}

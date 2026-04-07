@@ -40,15 +40,15 @@ export default function RecuperarSenhaEmail() {
                 return;
             }
 
-            // salva dados
+
             localStorage.setItem("emailVerificacao", email);
             localStorage.setItem("tipoVerificacao", "recuperacao");
 
-            // ✅ SUCESSO BONITO
+
             setMensagemSucesso("Código enviado para seu email!");
             setMostrarPopup(true);
 
-            // redireciona depois
+
             setTimeout(() => {
                 navigate("/verificarEmailSenha");
             }, 2000);
@@ -86,7 +86,7 @@ export default function RecuperarSenhaEmail() {
                             </button>
                         </div>
 
-                        {/* 🔴 ERRO */}
+
                         {erro && (
                             <p style={{
                                 color: "#ff4d4f",

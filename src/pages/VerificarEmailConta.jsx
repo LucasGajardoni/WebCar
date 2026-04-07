@@ -51,14 +51,14 @@ export default function VerificarEmailConta() {
                 return;
             }
 
-            // ✅ SUCESSO REAL DO CADASTRO
+
             setMensagemSucesso("Cadastro confirmado com sucesso!");
             setMostrarPopup(true);
 
-            // limpa email
+
             localStorage.removeItem("emailVerificacao");
 
-            // redireciona depois
+
             setTimeout(() => {
                 navigate("/login");
             }, 2000);
@@ -96,7 +96,7 @@ export default function VerificarEmailConta() {
                             </button>
                         </div>
 
-                        {/* ERRO */}
+
                         {erro && (
                             <p style={{
                                 color: "#ff4d4f",
@@ -111,7 +111,7 @@ export default function VerificarEmailConta() {
                 </div>
             </div>
 
-            {/* ✅ POPUP DE SUCESSO */}
+
             {mostrarPopup && (
                 <Sucesso
                     mensagem={mensagemSucesso}

@@ -129,7 +129,7 @@ body{
     }
 }
 
-/* Tablets pequenos e mobile landscape (até 768px) */
+
 @media (max-width: 768px) {
     .hero {
         height: 200px;
@@ -152,7 +152,7 @@ body{
     }
 
     .imagem {
-        display: none; /* Esconde a imagem em telas menores */
+        display: none;
     }
 
     .botao {
@@ -186,7 +186,7 @@ body{
     }
 }
 
-/* Mobile (até 576px) */
+
 @media (max-width: 769px) {
     .hero {
         height: 180px;
@@ -251,13 +251,13 @@ body{
         font-size: 0.75rem;
     }
 
-    /* Ajuste para o row gap dos cards */
+
     .row.g-4 {
         --bs-gutter-y: 1rem;
     }
 }
 
-/* Telas muito pequenas (até 400px) */
+
 @media (max-width: 400px) {
     .hero h1 {
         font-size: 1.2rem;
@@ -293,7 +293,7 @@ body{
     }
 }
 
-/* Ajustes para telas grandes (acima de 1400px) */
+
 @media (min-width: 1400px) {
     .imagem {
         margin-left: 500px;

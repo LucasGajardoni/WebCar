@@ -6,7 +6,7 @@ export default function Sucesso({ mensagem, onClose }) {
     useEffect(() => {
         const timer = setTimeout(() => {
             onClose();
-        }, 1000);
+        }, 5000);
 
         return () => clearTimeout(timer);
     }, []);
