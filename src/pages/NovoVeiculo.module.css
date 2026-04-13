@@ -1,0 +1,91 @@
+.layout {
+    display: flex;
+    min-height: 100vh;
+}
+
+.content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.main {
+    padding: 30px;
+    background-color: #f6f7fb;
+    flex: 1;
+}
+
+.titulo {
+    font-size: 22px;
+    font-weight: 700;
+}
+
+.subtitulo {
+    margin-bottom: 20px;
+    color: #6b7280;
+}
+
+.box {
+    background: white;
+    border-radius: 12px;
+    padding: 20px;
+    margin-bottom: 20px;
+    border: 1px solid #e5e7eb;
+}
+
+.upload {
+    border: 2px dashed #d1d5db;
+    height: 140px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.grid {
+    display: flex;
+    gap: 20px;
+}
+
+.row {
+    display: flex;
+    gap: 10px;
+}
+
+input {
+    width: 100%;
+    padding: 10px;
+    margin-top: 10px;
+    border-radius: 8px;
+    border: 1px solid #d1d5db;
+}
+
+.actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+}
+
+.cancelar {
+    background: #e5e7eb;
+    border: none;
+    padding: 10px 16px;
+    border-radius: 8px;
+}
+
+.salvar {
+    background: #2563eb;
+    color: white;
+    border: none;
+    padding: 10px 16px;
+    border-radius: 8px;
+}
+
+.erro {
+    color: red;
+    font-size: 12px;
+}
+
+.erroInput {
+    border: 1px solid red;
+}

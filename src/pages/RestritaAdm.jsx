@@ -1,5 +1,6 @@
+import SidebarMenu from "../components/SidebarMenu/SidebarMenu";
+import Dashboard from "../pages/Dashboard";
 import css from "./RestritaAdm.module.css";
-import { useNavigate } from "react-router-dom";
 
 export default function RestritaAdm() {
     const navigate = useNavigate();
@@ -24,15 +25,9 @@ export default function RestritaAdm() {
     }
 
     return (
-        <main className={css.container}>
-            <div className={css.card}>
-                <h1 className={css.titulo}>Olá, {nomeUsuario}</h1>
-                <p className={css.texto}>Essa página é exclusiva para administrador.</p>
-
-                <button className={css.botao} onClick={fazerLogout}>
-                    Logout
-                </button>
-            </div>
-        </main>
+        <div className={css.layout}>
+            <SidebarMenu />
+            <Dashboard />
+        </div>
     );
 }

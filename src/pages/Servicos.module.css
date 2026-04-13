@@ -1,0 +1,50 @@
+.layout {
+    min-height: 100vh;
+    background-color: #f5f7fb;
+}
+
+.main {
+    background-color: #f5f7fb;
+}
+
+.breadcrumbTexto {
+    font-size: 13px;
+    color: #8a94a6;
+}
+
+.titulo {
+    font-size: 2rem;
+    color: #182033;
+}
+
+.subtitulo {
+    color: #7c8799;
+    font-size: 15px;
+}
+
+.cardCustom {
+    border-radius: 14px;
+    overflow: hidden;
+}
+
+.theadCustom th {
+    background-color: #f8fafc;
+    color: #7c8799;
+    font-size: 12px;
+    font-weight: 700;
+    border-bottom: 1px solid #e9edf3;
+    padding: 16px;
+}
+
+.botaoNovo {
+    background-color: #2f67e8;
+    color: white;
+    border: none;
+    padding: 10px 18px;
+    font-weight: 600;
+}
+
+.botaoNovo:hover {
+    background-color: #2557c7;
+    color: white;
+}

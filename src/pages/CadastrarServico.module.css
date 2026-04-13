@@ -1,0 +1,50 @@
+.layout {
+    min-height: 100vh;
+    background-color: #f5f7fb;
+}
+
+.main {
+    background-color: #f5f7fb;
+}
+
+.breadcrumbTexto {
+    font-size: 13px;
+    color: #8a94a6;
+}
+
+.titulo {
+    font-size: 2rem;
+    color: #182033;
+}
+
+.subtitulo {
+    color: #7c8799;
+    font-size: 15px;
+}
+
+.cardCustom {
+    border-radius: 14px;
+    max-width: 700px;
+}
+
+.sectionTitle {
+    color: #182033;
+    font-size: 1.1rem;
+}
+
+.label {
+    font-size: 13px;
+    font-weight: 600;
+    color: #4c566a;
+}
+
+.botaoSalvar {
+    background-color: #2f67e8;
+    border: none;
+    color: white;
+}
+
+.botaoSalvar:hover {
+    background-color: #2557c7;
+    color: white;
+}

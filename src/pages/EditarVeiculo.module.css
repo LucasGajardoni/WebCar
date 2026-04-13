@@ -1,0 +1,80 @@
+.layout {
+    min-height: 100vh;
+    background-color: #f5f7fb;
+}
+
+.main {
+    background-color: #f5f7fb;
+}
+
+.breadcrumbTexto {
+    font-size: 13px;
+    color: #8a94a6;
+}
+
+.titulo {
+    font-size: 2rem;
+    color: #182033;
+}
+
+.subtitulo {
+    color: #7c8799;
+    font-size: 15px;
+}
+
+.cardCustom {
+    border-radius: 14px;
+}
+
+.sectionTitle {
+    color: #182033;
+    font-size: 1.1rem;
+}
+
+.label {
+    font-size: 13px;
+    font-weight: 600;
+    color: #4c566a;
+}
+
+.areaFoto {
+    position: relative;
+    width: 100%;
+    height: 230px;
+    border: 2px dashed #d9e0ea;
+    border-radius: 12px;
+    overflow: hidden;
+    background-color: #f8fafc;
+}
+
+.imagemVeiculo {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0.35;
+}
+
+.overlayFoto {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.iconeNuvem {
+    font-size: 2rem;
+    color: #8fa0b8;
+    margin-bottom: 0.5rem;
+}
+
+.botaoSalvar {
+    background-color: #2f67e8;
+    border: none;
+    color: white;
+}
+
+.botaoSalvar:hover {
+    background-color: #2557c7;
+    color: white;
+}

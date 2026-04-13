@@ -13,8 +13,17 @@ import RestritaVendedor from "./pages/RestritaVendedor.jsx";
 import Not from "./pages/Not.jsx"
 import Visualizar from "./pages/Visualizar.jsx";
 import Catalogo from "./pages/Catalogo.jsx";
+
 import VisualizarAdm from "./pages/VisualizarAdm.jsx";
 import AgendarSuaVisita from "./pages/AgendeSuaVisita.jsx";
+
+import Dashboard from "./pages/Dashboard.jsx";
+import Garagem from "./pages/Garagem.jsx";
+import NovoVeiculo from "./pages/NovoVeiculo.jsx";
+import EditarVeiculo from "./pages/EditarVeiculo.jsx";
+
+import Servicos from "./pages/Servicos"
+import CadastrarServico from "./pages/CadastrarServico.jsx";
 
 export default function App() {
     return (
@@ -31,6 +40,12 @@ export default function App() {
                 <Route path="/VisualizarAdm" element={<VisualizarAdm />} />
                 <Route path="/Agendar" element={<AgendarSuaVisita />} />
                 <Route path="/catalogo" element={<Catalogo />} />
+                <Route path="/dashboardadm" element={<Dashboard/>} />
+                <Route path="/garagem" element={<Garagem/>} />
+                <Route path="/Cadastroveiculo" element={<NovoVeiculo/>} />
+                <Route path="/EdicaoVeiculo" element={<EditarVeiculo/>} />
+                <Route path="/cadastrarservicos" element={<CadastrarServico />} />
+                <Route path="/servicos" element={<Servicos />} />
 
                 <Route path="*" element={<Not />} />
 
@@ -65,5 +80,7 @@ export default function App() {
                 />
             </Routes>
         </BrowserRouter>
+
+
     );
 }
