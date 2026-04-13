@@ -1,12 +1,12 @@
+import VisualizarCarroAdm from "../components/VisualizarCarroAdm/VisualizarCarroAdm.jsx";
 import Header from "../components/Header/Header.jsx";
 import Footer from "../components/Footer/Footer.jsx";
-import VisualizarCarro from "../components/VisualizarCarro/VisualizarCarro.jsx";
 
-export default function Visualizar(){
+export default function VisualizarAdm(){
     return (
         <>
             <Header />
-            <VisualizarCarro />
+            <VisualizarCarroAdm />
             <Footer />
         </>
     );

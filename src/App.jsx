@@ -13,6 +13,8 @@ import RestritaVendedor from "./pages/RestritaVendedor.jsx";
 import Not from "./pages/Not.jsx"
 import Visualizar from "./pages/Visualizar.jsx";
 import Catalogo from "./pages/Catalogo.jsx";
+import VisualizarAdm from "./pages/VisualizarAdm.jsx";
+import AgendarSuaVisita from "./pages/AgendeSuaVisita.jsx";
 
 export default function App() {
     return (
@@ -26,6 +28,8 @@ export default function App() {
                 <Route path="/trocarSenha" element={<TrocarSenha />} />
                 <Route path="/verificarEmailConta" element={<VerificarEmailConta />} />
                 <Route path="/Visualizar" element={<Visualizar />} />
+                <Route path="/VisualizarAdm" element={<VisualizarAdm />} />
+                <Route path="/Agendar" element={<AgendarSuaVisita />} />
                 <Route path="/catalogo" element={<Catalogo />} />
 
                 <Route path="*" element={<Not />} />

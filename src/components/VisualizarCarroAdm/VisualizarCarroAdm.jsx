@@ -1,8 +1,9 @@
 import { useState } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap-icons/font/bootstrap-icons.css";
+import css from "./VisualizarCarroAdm.module.css"
 
-export default function VisualizarCarro() {
+export default function VisualizarCarroAdm() {
     const imagens = [
         "/Car.png",
         "/Car.png",
@@ -70,6 +71,24 @@ export default function VisualizarCarro() {
                     <div className="card border-0 shadow-sm p-4">
                         <small className="text-muted">Preço</small>
                         <h2 className="fw-bold">R$24,950</h2>
+
+                        <div style={{display:"contents"}}>
+                            <div style={{display:"contents"}}>
+                                <label style={{fontWeight:"500"}}>Cliente</label>
+                                <select className={(css.selectCliente) + " " + (css.seeelect)}>
+                                    <option>Ryan Rivieira de Souza</option>
+                                    <option>Maria Silva</option>
+                                </select>
+                            </div>
+
+                            <div style={{display:"contents"}}>
+                                <label style={{fontWeight:"500"}}>Forma de Pagamento</label>
+                                <select className={(css.selectCliente) + " " + (css.seeelect)}>
+                                    <option>PIX</option>
+                                    <option>Cartão</option>
+                                </select>
+                            </div>
+                        </div>
 
                         <button className="btn btn-primary w-100 mt-3 d-flex align-items-center justify-content-center gap-2">
                             <i className="bi bi-calendar"></i>
