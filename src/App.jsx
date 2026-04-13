@@ -22,6 +22,7 @@ import EditarVeiculo from "./pages/EditarVeiculo.jsx";
 import Servicos from "./pages/Servicos"
 import CadastrarServico from "./pages/CadastrarServico.jsx";
 import EditarManutencao from "./pages/EditarManutencao.jsx"
+import Dashboard from "./pages/Dashboard.jsx";
 
 export default function App() {
     return (
@@ -44,6 +45,8 @@ export default function App() {
                 <Route path="/cadastrarservicos" element={<CadastrarServico />} />
                 <Route path="/adicionarmanutencao" element={<AdicionarManutencao />} />
                 <Route path="/editarmanutencao" element={<EditarManutencao />} />
+                <Route path="/editarmanutencao" element={<EditarManutencao />} />
+                <Route path="/dashboard" element={<Dashboard />} />
                 <Route path="/servicos" element={<Servicos />} />
                 <Route path="*" element={<Not />} />
 
