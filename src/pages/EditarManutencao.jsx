@@ -1,12 +1,13 @@
-import css from "./EditarManutencao.module.css"
+import css from "./AdicionarManutencao.module.css";
 import Header from "../components/Header/Header.jsx";
 import Footer from "../components/Footer/Footer.jsx";
 import { useState } from "react";
 
-export default function EditarManutencao() {
+export default function AdicionarManutencao() {
 
     const [preco, setPreco] = useState("");
     const [tipo, setTipo] = useState("");
+    const [dateTime, setDateTime] = useState("");
     const [erro, setErro] = useState("");
     const [sucesso, setSucesso] = useState("");
 
@@ -16,35 +17,37 @@ export default function EditarManutencao() {
         setErro("");
         setSucesso("");
 
-        if (!preco || !tipo) {
+        if (!preco || !tipo || !dateTime || !sucesso) {
             setErro("Preencha todos os campos");
             return;
         }
 
         try {
-            const response = await fetch("http://10.92.3.167:5000/editar_manutencao", {
-                method: "PUT",
+            const response = await fetch("http://10.92.3.167:5000/adicionar_manutencao", {
+                method: "POST",
                 headers: {
                     "Content-Type": "application/json"
                 },
                 body: JSON.stringify({
                     preco,
-                    tipo
+                    tipo,
+                    dateTime
                 })
             });
 
             const data = await response.json();
 
             if (!response.ok) {
-                setErro(data.mensagem || "Erro ao editar manutenção");
+                setErro(data.mensagem || "Erro ao adicionar manutenção");
                 return;
             }
 
-            setSucesso("Manutenção editada com sucesso!");
+            setSucesso("Manutenção adicionada com sucesso!");
 
             // limpa os campos
             setPreco("");
             setTipo("");
+            setDateTime("");
 
         } catch (error) {
             setErro("Erro ao conectar com o servidor");
@@ -80,6 +83,17 @@ export default function EditarManutencao() {
                                 placeholder="Ex: Troca de Pneu"
                                 value={tipo}
                                 onChange={(e) => setTipo(e.target.value)}
+                            />
+                        </div>
+
+                        <div className={css.inputgroup}>
+                            <label style={{ fontWeight: "500" }}>Data e Hora:</label>
+                            <input
+                                className={css.seeelect}
+                                placeholder="DD/MM/YYYY XX:XX"
+                                type="datetime-local"
+                                value={dateTime}
+                                onChange={(e) => setDateTime(e.target.value)}
                             />
                         </div>
 

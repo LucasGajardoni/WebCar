@@ -2,6 +2,7 @@ import SidebarMenu from "../components/SidebarMenu/SidebarMenu";
 import css from "./Garagem.module.css";
 import Header from "../components/Header/Header.jsx";
 import Footer from "../components/Footer/Footer.jsx";
+import {Link} from "react-router-dom";
 
 export default function Garagem() {
     return (
@@ -94,7 +95,15 @@ export default function Garagem() {
                             <td>2021</td>
                             <td>22,000 km</td>
                             <td className={css.preco}>$24500,00</td>
-                            <td className={css.acoes}>🔧 ✎ 🗑</td>
+                            <td className={css.acoes}> <Link to="/">
+                                🔧
+                            </Link> </td>
+                            <td className={css.acoes}> <Link to="/">
+                                ✎
+                            </Link> </td>
+                            <td className={css.acoes}> <Link to="/">
+                                🗑
+                            </Link> </td>
                         </tr>
 
                         <tr>

@@ -7,6 +7,7 @@ export default function AdicionarManutencao() {
 
     const [preco, setPreco] = useState("");
     const [tipo, setTipo] = useState("");
+    const [dateTime, setDateTime] = useState("");
     const [erro, setErro] = useState("");
     const [sucesso, setSucesso] = useState("");
 
@@ -16,7 +17,7 @@ export default function AdicionarManutencao() {
         setErro("");
         setSucesso("");
 
-        if (!preco || !tipo) {
+        if (!preco || !tipo || !dateTime || !sucesso) {
             setErro("Preencha todos os campos");
             return;
         }
@@ -29,7 +30,8 @@ export default function AdicionarManutencao() {
                 },
                 body: JSON.stringify({
                     preco,
-                    tipo
+                    tipo,
+                    dateTime
                 })
             });
 
@@ -45,6 +47,7 @@ export default function AdicionarManutencao() {
             // limpa os campos
             setPreco("");
             setTipo("");
+            setDateTime("");
 
         } catch (error) {
             setErro("Erro ao conectar com o servidor");
@@ -80,6 +83,17 @@ export default function AdicionarManutencao() {
                                 placeholder="Ex: Troca de Pneu"
                                 value={tipo}
                                 onChange={(e) => setTipo(e.target.value)}
+                            />
+                        </div>
+
+                        <div className={css.inputgroup}>
+                            <label style={{ fontWeight: "500" }}>Data e Hora:</label>
+                            <input
+                                className={css.seeelect}
+                                placeholder="DD/MM/YYYY XX:XX"
+                                type="datetime-local"
+                                value={dateTime}
+                                onChange={(e) => setDateTime(e.target.value)}
                             />
                         </div>
 

@@ -1,27 +1,76 @@
-import css from "./Catalogo.module.css"
+import css from "./Catalogo.module.css";
 import Header from "../components/Header/Header.jsx";
 import Footer from "../components/Footer/Footer.jsx";
 import Card from "../components/Cards/Card.jsx";
 import Filtro from "../components/Filtro/Filtro.jsx";
+import { useState, useEffect } from "react";
+export default function Catalogo() {
 
-export default function Catalogo(){
+    const [carros, setCarros] = useState([]);
+    const [erro, setErro] = useState("");
+
+    useEffect(() => {
+        async function buscarDados() {
+            try {
+                const response = await fetch("http://10.92.3.173:5000/buscar_veiculo", {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+                    credentials: "include",
+                    body: JSON.stringify(carros)
+                });
+
+                if (!response.ok) {
+                    setErro("Erro na API");
+                    return;
+                }
+
+                const data = await response.json();
+                setCarros(data.veiculos || data);
+
+            } catch (error) {
+                setErro("Erro ao conectar com o servidor");
+                console.log(error);
+            }
+        }
+
+        buscarDados();
+    }, []);
+
     return (
         <>
-
             <Header />
 
-            <div style={{display: "flex"}}>
+            <div style={{ display: "flex" }}>
                 <div className="col-lg-3">
                     <Filtro />
                 </div>
-                <div>
-                    <Card modelo={"BMW M4"} valor={"R$ 40.000"} />
-                    <Card modelo={"Ferrari"} valor={"R$ 4.000.000"} />
+
+                <div className="col-lg-9">
+
+                    {erro && <p>{erro}</p>}
+
+                    <div className="row">
+                        {carros.map((carro) => (
+                            <div className="col-md-4 mb-3" key={carro.id}>
+                                <Card
+                                    modelo={carro.modelo}
+                                    valor={carro.valor}
+                                    combustivel={carro.combustivel}
+                                    ano={carro.ano}
+                                    nome={carro.nome}
+                                    km={carro.km}
+                                    cambio={carro.cambio}
+                                />
+                            </div>
+                        ))}
+                    </div>
+
                 </div>
             </div>
 
             <Footer />
-
         </>
-    )
+    );
 }

@@ -33,7 +33,7 @@ export default function CadastrarServico() {
         }
 
         try {
-            const response = await fetch("http://10.92.3.167:5000/cadastrar_servico", {
+            const response = await fetch("http://localhost:5000/adicionar_servico", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json"

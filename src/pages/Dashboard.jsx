@@ -3,7 +3,7 @@ import SidebarMenu from "../components/SidebarMenu/SidebarMenu.jsx";
 import Header from "../components/Header/Header.jsx";
 import Footer from "../components/Footer/Footer.jsx";
 
-export default function Dashboard() {
+export default function Dashboard({tipo, descricao, valor}) {
     return (
         <>
             <Header />
@@ -15,7 +15,7 @@ export default function Dashboard() {
                     <section className={css.cards}>
                         <div className={css.card}>
                             <p className={css.cardLabel}>Saldo em Estoque</p>
-                            <h2 className={css.cardValue}>R$40000,00</h2>
+                            <h2 className={css.cardValue}>{valor}</h2>
                         </div>
 
                         <div className={css.card}>
@@ -23,7 +23,7 @@ export default function Dashboard() {
                                 <p className={css.cardLabel}>Despesa</p>
                                 <button className={css.addButton}>+</button>
                             </div>
-                            <h2 className={css.cardValue}>R$1000,00</h2>
+                            <h2 className={css.cardValue}>{valor}</h2>
                         </div>
 
                         <div className={css.card}>
@@ -31,12 +31,12 @@ export default function Dashboard() {
                                 <p className={css.cardLabel}>Receita</p>
                                 <button className={css.addButton}>+</button>
                             </div>
-                            <h2 className={css.cardValue}>R$5000,00</h2>
+                            <h2 className={css.cardValue}>{valor}</h2>
                         </div>
 
                         <div className={css.card}>
                             <p className={css.cardLabel}>Saldo</p>
-                            <h2 className={css.cardValue}>R$4000,00</h2>
+                            <h2 className={css.cardValue}>{valor}</h2>
                         </div>
                     </section>
 
@@ -89,9 +89,9 @@ export default function Dashboard() {
 
                             <tbody>
                             <tr>
-                                <td>Despesa</td>
-                                <td>Gasto com Pneus</td>
-                                <td>R$:100,00</td>
+                                <td>{tipo}</td>
+                                <td>{descricao}</td>
+                                <td>{valor}</td>
                                 <td>
                                     <button className={css.actionBtn}>✎</button>
                                 </td>

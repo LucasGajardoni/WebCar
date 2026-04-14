@@ -1,4 +1,5 @@
 import styles from "./SidebarMenu.module.css";
+import {Link} from "react-router-dom";
 
 export default function SidebarMenu() {
     return (
@@ -11,7 +12,7 @@ export default function SidebarMenu() {
 
                 <button className={styles.item}>
                     <GarageIcon />
-                    <span>Garagem</span>
+                    <Link to="/garagem">Garagem</Link>
                 </button>
 
                 <button className={styles.item}>
