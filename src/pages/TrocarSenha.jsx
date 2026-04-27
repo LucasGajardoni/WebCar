@@ -1,10 +1,10 @@
 import css from './Login.module.css';
-import Header from "../components/Header/Header.jsx";
-import Footer from "../components/Footer/Footer.jsx";
-import { useState } from "react";
+import Header from "../../src (1)/src/components/Header/Header.jsx";
+import Footer from "../../src (1)/src/components/Footer/Footer.jsx";
+import { useState} from "react";
 import { useNavigate } from "react-router-dom";
-import Sucesso from "../components/Sucesso/Sucesso.jsx";
-
+import Sucesso from "../../src (1)/src/components/sucesso/sucesso.jsx";
+import { API_URL } from "../../src (1)/src/App.jsx";
 export default function TrocarSenha() {
 
     const [novaSenha, setNovaSenha] = useState("");
@@ -17,7 +17,6 @@ export default function TrocarSenha() {
 
     async function avancar(e) {
         e.preventDefault();
-
         setErro("");
 
         const email = localStorage.getItem("emailVerificacao");
@@ -29,7 +28,7 @@ export default function TrocarSenha() {
         }
 
         try {
-            const response = await fetch("http://10.92.3.167:5000/trocar_senha", {
+            const response = await fetch(`${API_URL}/trocar_senha`, {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json"
@@ -49,14 +48,10 @@ export default function TrocarSenha() {
                 return;
             }
 
-
             setMensagemSucesso("Senha alterada com sucesso!");
             setMostrarPopup(true);
 
-
-            localStorage.removeItem("emailVerificacao");
-            localStorage.removeItem("codigoVerificacao");
-            localStorage.removeItem("tipoVerificacao");
+            localStorage.clear();
 
             setTimeout(() => {
                 navigate("/login");

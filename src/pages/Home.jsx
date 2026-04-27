@@ -1,9 +1,9 @@
-import Header from "../components/Header/Header.jsx";
-import Footer from "../components/Footer/Footer.jsx";
+import Header from "../../src (1)/src/components/Header/Header.jsx";
+import Footer from "../../src (1)/src/components/Footer/Footer.jsx";
 import "./Home.module.css";
-import Banner from "../components/Banner/Banner.jsx";
+import Banner from "../../src (1)/src/components/Banner/Banner.jsx";
 import css from "./Home.module.css";
-import Card from "../components/Cards/Card.jsx";
+import Card from "../../src (1)/src/components/Cards/Card.jsx";
 import {Link} from "react-router-dom";
 
 export default function Home() {

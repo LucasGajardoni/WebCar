@@ -1,8 +1,9 @@
-import SidebarMenu from "../components/SidebarMenu/SidebarMenu";
+import SidebarMenu from "../../src (1)/src/components/SidebarMenu/SidebarMenu.jsx";
 import css from "./CadastrarServico.module.css";
 import { useState } from "react";
-import Footer from "../components/Footer/Footer.jsx";
-import Header from "../components/Header/Header.jsx";
+import Footer from "../../src (1)/src/components/Footer/Footer.jsx";
+import Header from "../../src (1)/src/components/Header/Header.jsx";
+import { API_URL } from "../../src (1)/src/App.jsx";
 
 export default function CadastrarServico() {
     const [descricao, setDescricao] = useState("");
@@ -33,7 +34,7 @@ export default function CadastrarServico() {
         }
 
         try {
-            const response = await fetch("http://localhost:5000/adicionar_servico", {
+            const response = await fetch(`${API_URL}/adicionar_servico`, {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json"

@@ -23,6 +23,7 @@ import Servicos from "./pages/Servicos"
 import CadastrarServico from "./pages/CadastrarServico.jsx";
 import EditarManutencao from "./pages/EditarManutencao.jsx"
 import Dashboard from "./pages/Dashboard.jsx";
+import CadastroMarca from "./pages/CadastroMarca.jsx";
 
 export default function App() {
     return (
@@ -48,6 +49,7 @@ export default function App() {
                 <Route path="/editarmanutencao" element={<EditarManutencao />} />
                 <Route path="/dashboard" element={<Dashboard />} />
                 <Route path="/servicos" element={<Servicos />} />
+                <Route path="/cadastromarca" element={<CadastroMarca />} />
                 <Route path="*" element={<Not />} />
 
                 <Route

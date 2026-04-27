@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import css from "./Not.module.css";
-import Footer from "../components/Footer/Footer.jsx";
-import Header from "../components/Header/Header.jsx";
+import Footer from "../../src (1)/src/components/Footer/Footer.jsx";
+import Header from "../../src (1)/src/components/Header/Header.jsx";
 
 export default function Not() {
     return (

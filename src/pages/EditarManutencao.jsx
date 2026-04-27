@@ -1,7 +1,8 @@
 import css from "./AdicionarManutencao.module.css";
-import Header from "../components/Header/Header.jsx";
-import Footer from "../components/Footer/Footer.jsx";
+import Header from "../../src (1)/src/components/Header/Header.jsx";
+import Footer from "../../src (1)/src/components/Footer/Footer.jsx";
 import { useState } from "react";
+import { API_URL } from "../../src (1)/src/App.jsx";
 
 export default function AdicionarManutencao() {
 
@@ -23,7 +24,7 @@ export default function AdicionarManutencao() {
         }
 
         try {
-            const response = await fetch("http://10.92.3.167:5000/adicionar_manutencao", {
+            const response = await fetch(`${API_URL}/adicionar_manutencao`, {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json"
