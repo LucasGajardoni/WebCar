@@ -28,6 +28,7 @@ import Servicos from "./pages/Servicos.jsx";
 import CadastrarServico from "./pages/CadastrarServico.jsx";
 import EditarManutencao from "./pages/EditarManutencao.jsx";
 import Dashboard from "./pages/Dashboard.jsx";
+import CadastrarMarca from "./pages/CadastrarMarca.jsx";
 
 export default function App() {
     return (
@@ -53,6 +54,7 @@ export default function App() {
                 <Route path="/editarmanutencao" element={<EditarManutencao />} />
                 <Route path="/dashboard" element={<Dashboard />} />
                 <Route path="/servicos" element={<Servicos />} />
+                <Route path="/cadastrarmarca" element={<CadastrarMarca />} />
 
                 <Route path="*" element={<Not />} />
 
