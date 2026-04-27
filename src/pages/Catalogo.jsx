@@ -1,13 +1,9 @@
 import css from "./Catalogo.module.css";
-import Header from "../../src (1)/src/components/Header/Header.jsx";
-import Footer from "../../src (1)/src/components/Footer/Footer.jsx";
-import Card from "../../src (1)/src/components/Cards/Card.jsx";
-import Filtro from "../../src (1)/src/components/Filtro/Filtro.jsx";
+import Header from "../components/Header/Header.jsx";
+import Footer from "../components/Footer/Footer.jsx";
+import Card from "../components/Cards/Card.jsx";
+import Filtro from "../components/Filtro/Filtro.jsx";
 import { useState, useEffect } from "react";
-import { API_URL } from "../../src (1)/src/App.jsx";
-
-
-
 export default function Catalogo() {
 
     const [carros, setCarros] = useState([]);
@@ -16,7 +12,7 @@ export default function Catalogo() {
     useEffect(() => {
         async function buscarDados() {
             try {
-                const response = await fetch(`${API_URL}/buscar_veiculo`, {
+                const response = await fetch("http://10.92.3.173:5000/buscar_veiculo", {
                     method: "POST",
                     headers: {
                         "Content-Type": "application/json"

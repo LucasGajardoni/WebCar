@@ -1,7 +1,7 @@
 import css from "./Dashboard.module.css";
-import SidebarMenu from "../../src (1)/src/components/SidebarMenu/SidebarMenu.jsx";
-import Header from "../../src (1)/src/components/Header/Header.jsx";
-import Footer from "../../src (1)/src/components/Footer/Footer.jsx";
+import SidebarMenu from "../components/SidebarMenu/SidebarMenu.jsx";
+import Header from "../components/Header/Header.jsx";
+import Footer from "../components/Footer/Footer.jsx";
 
 export default function Dashboard({tipo, descricao, valor}) {
     return (

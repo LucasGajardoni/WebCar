@@ -1,10 +1,9 @@
 import css from './Login.module.css';
-import Header from "../../src (1)/src/components/Header/Header.jsx";
+import Header from "../components/Header/Header.jsx";
 import { Link, useNavigate } from "react-router-dom";
-import Footer from "../../src (1)/src/components/Footer/Footer.jsx";
+import Footer from "../components/Footer/Footer.jsx";
 import { useState } from "react";
-import Sucesso from "../../src (1)/src/components/sucesso/sucesso.jsx";
-import { API_URL } from "../../src (1)/src/App.jsx";
+import Sucesso from "../components/Sucesso/Sucesso.jsx";
 
 export default function Login() {
     const navigate = useNavigate();
@@ -25,7 +24,7 @@ export default function Login() {
         setErro("");
 
         try {
-            const response = await fetch(`${API_URL}/login`, {
+            const response = await fetch("http://10.92.3.167:5000/login", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json"
@@ -56,7 +55,7 @@ export default function Login() {
 
             setTimeout(() => {
                 if (data.usuario.tipo === 0) {
-                    navigate("/dashboard");
+                    navigate("/dashboardadm");
                 } else if (data.usuario.tipo === 1) {
                     navigate("/restrita-vendedor");
                 } else {

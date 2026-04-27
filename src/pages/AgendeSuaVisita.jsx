@@ -1,8 +1,7 @@
 import { useState } from "react";
 import css from "./AgendeSuaVisita.module.css";
-import Header from "../../src (1)/src/components/Header/Header.jsx";
-import Footer from "../../src (1)/src/components/Footer/Footer.jsx";
-import { API_URL } from "../../src (1)/src/App.jsx";
+import Header from "../components/Header/Header.jsx";
+import Footer from "../components/Footer/Footer.jsx";
 
 export default function AgendarSuaVisita() {
     const [nome, setNome] = useState("");
@@ -14,7 +13,7 @@ export default function AgendarSuaVisita() {
         e.preventDefault();
 
         try {
-            const response = await fetch(`${API_URL}/agendar_visita`, {
+            const response = await fetch("http://10.92.3.167:5000/agendar_visita", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json"

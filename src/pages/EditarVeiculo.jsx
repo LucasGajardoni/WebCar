@@ -1,7 +1,7 @@
-import SidebarMenu from "../../src (1)/src/components/SidebarMenu/SidebarMenu.jsx";
+import SidebarMenu from "../components/SidebarMenu/SidebarMenu";
 import css from "./EditarVeiculo.module.css";
-import Header from "../../src (1)/src/components/Header/Header.jsx";
-import Footer from "../../src (1)/src/components/Footer/Footer.jsx";
+import Header from "../components/Header/Header.jsx";
+import Footer from "../components/Footer/Footer.jsx";
 
 export default function EditarVeiculo() {
     return (

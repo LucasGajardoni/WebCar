@@ -1,13 +1,10 @@
 import "./Cadastro.module.css";
 import css from "./Cadastro.module.css";
-import Header from "../../src (1)/src/components/Header/Header.jsx";
+import Header from "../components/Header/Header";
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { API_URL } from "../../src (1)/src/App.jsx";
-
 
 export default function Cadastro() {
-
     const navigate = useNavigate();
 
     const [nome, setNome] = useState("");
@@ -67,7 +64,7 @@ export default function Cadastro() {
         }
 
         try {
-            const response = await fetch(`${API_URL}/adicionar_usuario`, {
+            const response = await fetch("http://10.92.3.167:5000/adicionar_usuario", {
                 method: "POST",
                 body: formData
             });

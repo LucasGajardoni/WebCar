@@ -1,10 +1,10 @@
-import SidebarMenu from "../../src (1)/src/components/SidebarMenu/SidebarMenu.jsx";
+import SidebarMenu from "../components/SidebarMenu/SidebarMenu";
 import css from "./NovoVeiculo.module.css";
 
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import Header from "../../src (1)/src/components/Header/Header.jsx";
-import Footer from "../../src (1)/src/components/Footer/Footer.jsx";
+import Header from "../components/Header/Header.jsx";
+import Footer from "../components/Footer/Footer.jsx";
 
 export default function NovoVeiculo() {
     const navigate = useNavigate();
@@ -187,7 +187,7 @@ export default function NovoVeiculo() {
                 formData.append("imagem", imagem);
             }
 
-            const response = await fetch(`${API_URL}/cadastrar_veiculo`, {
+            const response = await fetch("http://10.92.3.167:5000/cadastrar_veiculo", {
                 method: "POST",
                 credentials: "include",
                 body: formData
